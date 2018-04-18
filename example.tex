@@ -1,0 +1,19 @@
+\begin{lstlisting}[language={[GUI]Uppaal},
+  caption={\uppaal code example listing.},
+  label={lst:example}]
+int lIZERO = 0;   // note the characters l, I, 0 and O
+int distance = 5; // approximated distance between cars
+int velocityEgo, velocityFront; /* approximated velocities */
+int accelerationEgo, accelerationFront; /** acceleration */
+void updateDiscrete() {
+    int newVel, oldVel = velocityFront - velocityEgo;
+    velocityEgo = velocityEgo + accelerationEgo;
+    velocityFront = velocityFront + accelerationFront;
+    newVel = velocityFront - velocityEgo;
+    if (distance > maxSensorDistance) {
+        distance = maxSensorDistance + 1;
+    } else {
+        distance += (oldVel + newVel)/2;
+    }
+}
+\end{lstlisting}

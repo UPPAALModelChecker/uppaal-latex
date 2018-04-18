@@ -1,0 +1,23 @@
+\begin{uppaalcode}[caption={Heavily customized listing.},
+  label={lst:example2},
+  captionpos=b, % put caption at the bottom of the listing
+  float, % make it "float", prevents page-breaks in listing
+  frame=shadowbox, rulesepcolor=\color{lightgray},
+  numbers=left,numberstyle=\tiny,numbersep=3mm,
+  xleftmargin=5mm]
+int lIZERO = 0;   // note the characters l, I, 0 and O
+int distance = 5; // approximated distance between cars
+int velocityEgo, velocityFront; /* approximated velocities */
+int accelerationEgo, accelerationFront; /** acceleration */
+void updateDiscrete() {
+    int velNew, velOld = velocityFront - velocityEgo;
+    velocityEgo = velocityEgo + accelerationEgo;
+    velocityFront = velocityFront + accelerationFront;
+    velNew = velocityFront - velocityEgo;
+    if (distance > maxSensorDistance) {
+        distance = maxSensorDistance + 1;
+    } else { // $d \approx \sum_i \frac{v_i+v_{i+1}}{2}\Delta t$
+        distance += (velOld + velNew)/2;
+    }
+}
+\end{uppaalcode}

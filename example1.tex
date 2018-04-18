@@ -1,0 +1,17 @@
+\begin{uppaalcode}
+int lIZERO = 0;   // note the characters l, I, 0 and O
+int distance = 5; // approximated distance between cars
+int velocityEgo, velocityFront; /* approximated velocities */
+int accelerationEgo, accelerationFront; /** acceleration */
+void updateDiscrete() {
+    int newVel, oldVel = velocityFront - velocityEgo;
+    velocityEgo = velocityEgo + accelerationEgo;
+    velocityFront = velocityFront + accelerationFront;
+    newVel = velocityFront - velocityEgo;
+    if (distance > maxSensorDistance) {
+        distance = maxSensorDistance + 1;
+    } else { // $d \approx \sum_i \frac{v_i+v_{i+1}}{2}\Delta t$
+        distance += (oldVel + newVel)/2;
+    }
+}
+\end{uppaalcode}

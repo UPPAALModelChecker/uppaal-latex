@@ -1,0 +1,264 @@
+\ProvidesPackage{uppaal} [2018/01/29 Style file for Uppaal typesetting]
+%%
+%% Options: (not implemented! sorry)
+%%   font: beramono -- as in Uppaal (default),
+%%         default -- whatever the document class uses for \ttfamily)
+%%         lmtt -- Latin Modern typewriter
+%% colors: gui -- color scheme used as in Uppaal GUI (default),
+%%         gray -- grayscale,
+%%         bw -- black and white.
+%%
+
+%\RequirePackage{kvoptions}
+
+%\DeclareStringOption[beramono]{font}{beramono}
+%\DeclareStringOption[gui]{colors}{gui}
+
+%% \newcommand{\attr}[1]{{\sc #1}\xspace}
+%% \newcommand{\fattr}[2]{\attr{#1}\hskip -.1cm(#2)\xspace}
+%% \newcommand{\bbbn}{\ensuremath{{\mathbb N}}\xspace}
+%% \newcommand{\bbbr}{\ensuremath{{\mathbb R}}\xspace}
+%% \newcommand{\bbbz}{\ensuremath{{\mathbb Z}}\xspace}
+%% \newcommand{\nplus}{\ensuremath{\bbbn_{\geq0}}}
+
+%%
+
+%\RequirePackage[nott,scaled=0.95]{inconsolata} %% nicer typewriter style
+\RequirePackage{xspace}  % for optional space after keywords
+\RequirePackage{xcolor}
+\RequirePackage[final]{listings}
+%\RequirePackage{newverbs}
+%\RequirePackage[most,listings]{tcolorbox}
+
+%% Colors for Uppaal labels:
+\definecolor{uppCommentColor}{rgb}{0.4,0,0} % dark red
+\definecolor{uppKeywordColor}{rgb}{0,0.4,0} % dark green
+\definecolor{uppTypeColor}{rgb}{0,0.3,0} % darker green
+
+\definecolor{uppLocColor}{rgb}{0.5,0,0} % dark red
+\definecolor{uppInvColor}{rgb}{0.4,0,0.4} % dark magenta
+\definecolor{uppRateColor}{rgb}{0.875,0.25,0.5} % pink
+\definecolor{uppSelectColor}{rgb}{0.4,0.4,0} % dark yellow, brown
+\definecolor{uppGuardColor}{rgb}{0,0.3,0} % dark green
+\definecolor{uppSyncColor}{rgb}{0,0.4,0.4} % cyan
+\definecolor{uppUpdateColor}{rgb}{0,0,0.4} % dark blue
+\definecolor{uppWeightColor}{rgb}{0.4,0.2,0} % dark orange, red brown
+\definecolor{uppTransColor}{rgb}{0.4,0,0.4} % dark magenta
+
+\newcommand{\uppaal}{{\sc Uppaal}\xspace}
+\newcommand{\uppaaltron}[0]{\uppaal~{\sc Tron}\xspace}
+\newcommand{\uppaalsmc}[0]{\uppaal~SMC\xspace}
+\newcommand{\uppaaltiga}[0]{\uppaal~{\sc Tiga}\xspace}
+\newcommand{\stratego}[0]{\uppaal~{\sc Stratego}\xspace}
+
+% Guide to fonts: https://tex.stackexchange.com/questions/25249/how-do-i-use-a-particular-font-for-a-small-section-of-text-in-my-document
+% \ttfamily, % default tt font, automatic size specification
+% \fontfamily{fvmro8t}, % beramono, dot inside zero
+% \fontfamily{cmtt}, % Computer Modern font, bad curly braces
+% \fontfamily{pcr}, % Courier font
+% \fontfamily{lmtt}\fontseries{l/m/b}\selectfont, % Latin Modern font
+% \fontfamily{fi4}, % inconsolata
+
+%---------------------------------------------------------------------
+% Latin Modern typewriter fonts:
+%\newcommand{\uppBasicStyle}[0]{%
+%  \fontfamily{lmtt}\fontseries{m}\selectfont}
+%\newcommand{\uppBfStyle}[0]{%
+%  \fontfamily{lmtt}\fontseries{b}\selectfont}
+%\newcommand{\uppSlStyle}[0]{%
+%  \fontfamily{lmtt}\fontseries{m}\selectfont\slshape}
+%\newcommand{\uppSlBfStyle}[0]{%
+%  \fontfamily{lmtt}\fontseries{b}\selectfont\slshape\bfseries}
+
+%---------------------------------------------------------------------
+%%% Bera Mono: Bitstream Vera Mono optimized for TeX (dot inside zero)
+% taken from beramono:
+%\RequirePackage[scaled]{beramono} % enhanced Bitstream Vera Mono, with dot inside zero
+%\RequirePackage[T1]{fontenc}
+%\RequirePackage{keyval}
+\def\fvm@Scale{0.85}
+
+\expandafter\ifx\csname fvm@Scale\endcsname\relax
+ \let\fvm@@Scale\@empty
+\else
+ \edef\fvm@@Scale{s*[\csname fvm@Scale\endcsname]}%
+\fi
+\DeclareFontFamily{T1}{fvm}{\hyphenchar \font -1}
+\DeclareFontShape{T1}{fvm}{m}{n}{ <-> \fvm@@Scale fvmr8t }{}
+\DeclareFontShape{T1}{fvm}{m}{sl}{ <-> \fvm@@Scale fvmro8t }{}
+\DeclareFontShape{T1}{fvm}{b}{n}{ <-> \fvm@@Scale fvmb8t }{}
+\DeclareFontShape{T1}{fvm}{b}{sl}{ <-> \fvm@@Scale fvmbo8t }{}
+\DeclareFontShape{T1}{fvm}{m}{it}{<->ssub * fvm/m/sl}{}
+\DeclareFontShape{T1}{fvm}{bx}{n}{<->ssub * fvm/b/n}{}
+\DeclareFontShape{T1}{fvm}{bx}{sl}{<->ssub * fvm/b/sl}{}
+\DeclareFontShape{T1}{fvm}{b}{it}{<->ssub * fvm/b/sl}{}
+\DeclareFontShape{T1}{fvm}{bx}{it}{<->ssub * fvm/b/sl}{}
+\newcommand{\uppPlainStyle}{%
+  \fontencoding{T1}\fontfamily{fvm}\fontseries{m}\selectfont}
+\newcommand{\uppBfStyle}{%
+  \fontencoding{T1}\fontfamily{fvm}\fontseries{b}\selectfont\bfseries}
+\newcommand{\uppSlStyle}{%
+  \fontencoding{T1}\fontfamily{fvm}\fontseries{m}\selectfont\slshape}
+\newcommand{\uppSlBfStyle}{%
+  \fontencoding{T1}\fontfamily{fvm}\fontseries{b}\selectfont\slshape\bfseries}
+
+\newcommand{\uppBasicStyle}{\uppPlainStyle}
+\newcommand{\uppKeywordStyle}{\uppBfStyle}
+\newcommand{\uppTypeStyle}{\uppBfStyle}
+\newcommand{\uppConstStyle}{\uppBfStyle}
+\newcommand{\uppFuncStyle}{\uppSlStyle}
+\newcommand{\uppCommentStyle}{\uppSlStyle}
+\newcommand{\uppFCommentStyle}{\uppSlBfStyle}
+
+
+%---------------------------------------------------------------------
+
+% Attempt to fix the disappearing of minus sign (did not work):
+% \mathchardef\hyphenmathcode=\mathcode`\- % fix for minus sign in listing
+
+%% Fix the disappearance of minus "-" sign (seems to work):
+\makeatletter
+\lst@CCPutMacro\lst@ProcessOther {"2D}{\lst@ttfamily{-{}}{-{}}}
+\@empty\z@\@empty
+\makeatother
+
+%\lstset{%numbers=left,numberstyle=\tiny,stepnumber=1,numbersep=5pt,
+%  basicstyle=\small\sffamily,
+%  captionpos=b,columns=flexible
+%}
+
+\lstdefinelanguage{Uppaal}{
+  fontadjust,%columns=flexible,
+  keepspaces=true,
+  keywordstyle=\uppKeywordStyle,
+  keywordstyle={[2]\uppTypeStyle},
+  keywordstyle={[3]\uppConstStyle},
+  keywordstyle={[4]\uppFuncStyle},
+  keywords={after_update,assign,before_update,break,case,const,continue,
+     default,else,enum,exists,for,forall,foreach,gantt,guard,
+     if,meta,process,progress,return,select,spawn,state,sync,switch,trans,
+     system,while},
+  keywords={[2]broadcast,bool,clock,chan,commit,double,dynamic,hybrid,init,
+    int,scalar,struct,typedef,urgent,void},
+  keywords={[3]false,true},
+  keywords={[4]ceil,cos,exit,exp,fabs,floor,ln,log,numOf,pow,random,sqrt,sin,sum,tan},
+  otherkeywords={[3]->},
+  morekeywords={[3]->},
+  comment=[l]{//}, morecomment=[s]{/*}{*/}, % single and multi-line
+  morecomment=[s][\uppFCommentStyle]{/**}{*/},
+  commentstyle=\uppCommentStyle, % appear in italic
+  tabsize=4, % tab treatment (going to be fixed in Uppaal)
+  escapechar=@ % write LaTeX comments escaped by @ symbol
+}
+
+\lstdefinelanguage[GUI]{Uppaal}[]{Uppaal}{ % syntax like in GUI
+  basicstyle=\uppBasicStyle,
+  keywordstyle=\uppBfStyle,
+  keywordstyle={[2]\color{uppTypeColor}},
+  keywordstyle={[3]\color{uppTransColor}\uppConstStyle},
+  otherkeywords={->},
+  commentstyle={\color{uppCommentColor}\uppCommentStyle}, % dark red
+  morecomment=[s][\color{uppCommentColor}\uppSlBfStyle]{/**}{*/},
+  breaklines=true, breakatwhitespace=true, % enable line breaks
+  literate={{-->}{$-->$}3
+     {<>}{{RR}}2
+     {[]}{{\tt []}}2
+     {<=}{{\tt <=}}2
+     {>=}{{\tt >=}}2
+     {>}{{\tt >}}1
+     {<}{{\tt <}}1
+  } % fix arrows, diamonds and boxes
+}
+
+\lstdefinelanguage[LIT]{Uppaal}[GUI]{Uppaal}{ % replace some symbols
+  literate={{->}{{$\leadsto$} }2 {-->}{{$\longrightarrow$} }2
+     {=}{{$\gets$}}1 {==}{{$=$}}1 {:=}{{$\gets$}}1 {<=}{{$\leq$}}1
+     {>=}{{$\geq$}}1 {!=}{{$\neq$}}1
+     {&&}{{$\land$}}1 {and}{{$\land$}}1 {||}{{$\lor$}}1 {or}{{$\lor$}}1
+     {not}{{$\neg$}}1 {imply}{{$\Rightarrow$}}2
+     {A<>}{{$\forall\Diamond\;$}}3
+     {E<>}{{$\exists\Diamond\;$}}3
+     {A[]}{{$\forall\Box\;$}}3
+     {E[]}{{$\exists\Box\;$}}3
+     {Pr[}{{$\Pr$[}}3
+     {<>}{{$\Diamond$}}1
+     {[]}{{$\Box$}}1
+     {forall}{{$\forall$}}1 {exists}{{$\exists$}}1}
+}
+
+\newcommand\uppTestA[1]{{#1}\Collectverb{\lstinline[language={[GUI]Uppaal},basicstyle=\uppBasicStyle,columns=flexible]}}
+
+\newcommand{\uppTestB}{%
+  \collectverb{\lstinline[language={[GUI]Uppaal},basicstyle=\uppBasicStyle,columns=flexible]}}
+
+
+\newcommand\uppTestC[1]{\uppTestB@#1@}
+
+
+
+\newcommand{\uppPlain}[1]{\lstinline[language={Uppaal},basicstyle=\uppBasicStyle,columns=flexible,breaklines=true]@#1@}
+
+\newcommand{\uppStat}[1]{\lstinline[language={[GUI]Uppaal},basicstyle=\uppBasicStyle,columns=flexible,breaklines=true]@#1@}
+
+\newcommand{\uppMath}[1]{\lstinline[language={[LIT]Uppaal},basicstyle=\uppBasicStyle,columns=flexible,breaklines=true]@#1@} %
+
+
+\newcommand{\uppExpr}[1]{{\uppStat{#1}}} % expressions within code context
+
+\newcommand{\uppElement}[1]{{\uppPlain{#1}}} %% graphical model element
+\newcommand{\uppLoc}[1]{{\color{uppLocColor}\uppElement{#1}}} %% Location name
+\newcommand{\uppInv}[1]{{\color{uppInvColor}\uppElement{#1}}} %% Invariant Expression
+\newcommand{\uppRate}[1]{{\color{uppRateColor}\uppElement{#1}}} %% Exponential rate Expression
+\newcommand{\uppSelect}[1]{{\color{uppSelectColor}\uppElement{#1}}} %% Select Expression
+\newcommand{\uppGuard}[1]{{\color{uppGuardColor}\uppElement{#1}}} %% Guard Expression
+\newcommand{\uppSync}[1]{{\color{uppSyncColor}\uppElement{#1}}} %% channel synchronization
+\newcommand{\uppOut}[1]{\uppSync{#1!}} %% Channel output / send
+\newcommand{\uppIn}[1]{\uppSync{#1?}} %%Channel input / receive
+\newcommand{\uppUpdate}[1]{{\color{uppUpdateColor}\uppElement{#1}}} %% update expression
+\newcommand{\uppWeight}[1]{{\color{uppWeightColor}\uppElement{#1}}} %% update expression
+
+\newcommand{\uppTemp}[1]{\uppElement{#1}} %% Template name
+\newcommand{\uppProc}[1]{\uppElement{#1}} %% Processes name
+
+\newcommand{\uppDecl}[1]{{\uppPlain{#1}}} %% variable names
+\newcommand{\uppClock}[1]{\uppDecl{#1}} %% Clock name
+\newcommand{\uppChan}[1]{\uppDecl{#1}} %% Channel name
+\newcommand{\uppVar}[1]{\uppDecl{#1}} %% Variable name
+\newcommand{\uppConst}[1]{{\uppConstStyle\uppDecl{#1}}} %% Const name
+\newcommand{\uppType}[1]{{\color{uppTypeColor}\uppTypeStyle\uppDecl{#1}}} %% Type name
+\newcommand{\uppFunc}[1]{{\uppFuncStyle\uppDecl{#1}}} %%Function name
+
+\newcommand{\uppProp}[1]{{\uppStat{#1}}} % Uppaal TCTL property
+\newcommand{\uppEF}[1]{{\uppProp{E<> #1}}} %
+\newcommand{\uppEG}[1]{{\uppProp{E[] #1}}} %
+\newcommand{\uppAF}[1]{{\uppProp{A<> #1}}} %
+\newcommand{\uppAG}[1]{{\uppProp{A[] #1}}} %
+\newcommand{\uppPr}[1]{{\uppProp{Pr#1}}} %
+\newcommand{\uppPrF}[2]{{\uppProp{Pr[#1](<> #2)}}} %
+\newcommand{\uppPrG}[2]{{\uppProp{Pr[#1]([] #2)}}} %
+\newcommand{\uppSim}[3]{{\uppProp{simulate #1 [#2]\{#3\}}}} %
+\newcommand{\uppSimC}[5]{{\uppProp{simulate #1 [#2]\{#3\}:#4:#5}}} %
+
+\lstnewenvironment{uppaalcode}[1][]%
+{\lstset{language={[GUI]Uppaal},
+    basicstyle=\uppBasicStyle,
+    % captionpos=b, % put captions at the bottom
+    numbers=none,texcl, % float,
+    numberstyle=\tiny,stepnumber=1, %numbersep=4mm,
+    % numbers=left,xleftmargin=4mm, xrightmargin=4mm,
+   #1}}
+{}
+
+%\newtcblisting[auto counter]{uppaalcode}[3][]{
+%    enhanced,
+%    colframe=black!70!white, colback=black!7!white,
+%    % fonttitle=\uppBfStyle,
+%    coltitle=black, colbacktitle=white,
+%    title={{\bf Listing \thetcbcounter:} #2}, label={#3},
+%    % attach boxed title to top left = {xshift=5mm,yshift=-2mm} ,
+%    % boxed title style={size=small, colback=blue!75!black},
+%    % width=.5\linewidth,
+%    listing only, drop lifted shadow, size=small, top=-2mm, bottom=-2mm,
+%    listing options={language={[GUI]Uppaal},basicstyle=\uppBasicStyle},%
+%    #1
+%}
