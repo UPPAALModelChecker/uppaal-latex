@@ -29,7 +29,7 @@ Customized using `lstlisting` options:
 
 1. Make sure that `listings`, `xcolor` and `xspace` are installed. In Linux distributions this is usually found in `texlive-latex-recommended` (`sudo apt-get install texlive-latex-recommended`).
 
-2. Download `uppaal.sty` and put it into your LaTeX project directory.
+2. Download [`uppaal.sty`](uppaal.sty) and put it into your LaTeX project directory.
 
 3. Add `\usepackage{uppaal}` to your main .tex file.
 
@@ -55,4 +55,4 @@ void updateDiscrete() {
 \end{uppaalcode}
 ```
 
-See `manual.pdf` for more details on how to customize.
+See [`manual.pdf`](manual.pdf) for more details on how to customize.
