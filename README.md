@@ -29,14 +29,16 @@ Customized using `lstlisting` options:
 
 1. Make sure that `listings`, `xcolor` and `xspace` are installed. In Linux distributions this is usually found in `texlive-latex-recommended` (`sudo apt-get install texlive-latex-recommended`).
 
-2. Download `uppaal.sty` from [releases](https://github.com/DEIS-Tools/uppaal-latex/releases) and put it into your LaTeX project directory.
+2. Make sure that the font `beramono` is installed (usually ships as `fvm*` files with `texlive-font-extra`)
 
-3. Add `\usepackage{uppaal}` to your main .tex file.
+3. Download `uppaal.sty` from [releases](https://github.com/DEIS-Tools/uppaal-latex/releases) and put it into your LaTeX project directory.
 
-4. Embed Uppaal code into your .tex files, like:
+4. Add `\usepackage{uppaal}` to your main .tex file.
+
+5. Embed Uppaal code into your .tex files, like:
 
 ```LaTeX
-\begin{uppaalcode}
+\begin{uppaalcode}[caption={Updates velocity and position.},label={lst:updatecode}]
 int lIZERO = 0;   // note the characters l, I, 0 and O
 int distance = 5; // approximated distance between cars
 int velocityEgo, velocityFront; /* approximated velocities */
