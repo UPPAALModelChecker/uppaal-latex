@@ -8,18 +8,18 @@
 
 \title{\LaTeX{} Style for \uppaal Models}
 %\date{}
-\author{Marius Miku\v{c}ionis \\ {\tt marius@cs.aau.dk}}
+\author{Marius Miku\v{c}ionis \\ {\ttfamily marius@cs.aau.dk}}
 
-\newcommand{\cmdbf}[1]{{\bf \textbackslash#1}}
-\newcommand{\cmdtt}[1]{{\tt \textbackslash#1}}
+\newcommand{\cmdbf}[1]{{\bfseries \textbackslash#1}}
+\newcommand{\cmdtt}[1]{{\ttfamily \textbackslash#1}}
 
 \begin{document}
 \maketitle
 
 
 \section{Introduction}
-The intent of this manual is to document the features of {\tt uppaal.sty} \LaTeX{} style package.
-The {\tt uppaal.sty} package has been developed over many years of publishing papers related to \uppaal.
+The intent of this manual is to document the features of {\ttfamily uppaal.sty} \LaTeX{} style package.
+The {\ttfamily uppaal.sty} package has been developed over many years of publishing papers related to \uppaal.
 The initial intent was to gather common definitions used throughout papers.
 The common definitions outgrew into package and finally became a piece of software it is now.
 
@@ -35,7 +35,7 @@ numbers=left,numberstyle=\tiny,numbersep=3mm,xleftmargin=5mm]{example1.tex}
 The result is the following minimalistic listing:
 \input{example1}
 
-Listing~\ref{lst:example2} shows the same listing with customized {\bf uppaalcode} environment.
+Listing~\ref{lst:example2} shows the same listing with customized {\bfseries uppaalcode} environment.
 
 \lstinputlisting[language={tex},caption={\LaTeX{} code.},
 language={tex},keywords={begin,end,caption,label,language,captionpos,float,frameshape,frame,rulesepcolor,numbers,numberstyle,numbersep,xleftmargin,xrightmargin},
@@ -64,42 +64,42 @@ The style package depends on the following \LaTeX{} packages:
 \item[listings] -- to implement the actual \href{https://www.ctan.org/pkg/listings}{listings} typesetting.
 \item[xcolor] -- to define and customize colors.
 \item[xspace] -- to omit trailing space for tool names.
-\item[beramono] -- \href{http://www.tug.dk/FontCatalogue/beramono/}{Bitstream Vera Mono} fonts, the directory is usually called {\tt bera} and the font files are prefixed with {\tt fvm}.
+\item[beramono] -- \href{http://www.tug.dk/FontCatalogue/beramono/}{Bitstream Vera Mono} fonts, the directory is usually called {\ttfamily bera} and the font files are prefixed with {\ttfamily fvm}.
 \end{description}
 The packages above are common and usually distributed by \href{https://www.tug.org/texlive/}{TeXLive} and \href{https://miktex.org/}{MikTex}.
-For example, Debian GNU/Linux puts them into {\tt texlive-latex-recommended}, {\tt texlive-latex-recommended-doc} and {\tt texlive-fonts-extra} packages.
+For example, Debian GNU/Linux puts them into {\ttfamily texlive-latex-recommended}, {\ttfamily texlive-latex-recommended-doc} and {\ttfamily texlive-fonts-extra} packages.
 
 
 \section{Package Options}
 None is implemented. It would be nice to turn on and off the coloring to gray scale printing, change the typewriter fonts as some proceedings demand using their own.
 
 \section{Environments}
-The {\tt uppaal.sty} defines \uppaal language styles for {\tt listings.sty} package, thus all the hard lifting is done by {\tt listings.sty} and the details can be found in {\bf listings} documentation.
+The {\ttfamily uppaal.sty} defines \uppaal language styles for {\ttfamily listings.sty} package, thus all the hard lifting is done by {\ttfamily listings.sty} and the details can be found in {\bfseries listings} documentation.
 \begin{description}
-\item[lstlisting] environment is the way to typeset any listing, and one needs to specify {\tt language=\{[GUI]Uppaal\}} parameter to turn on syntax highlighting similar to \uppaal editor.
-\item[uppaalcode] environment is a shorthand to {\bf lstlisting} environment with the language predefined to {\tt [GUI]Uppaal}.
+\item[lstlisting] environment is the way to typeset any listing, and one needs to specify {\ttfamily language=\{[GUI]Uppaal\}} parameter to turn on syntax highlighting similar to \uppaal editor.
+\item[uppaalcode] environment is a shorthand to {\bfseries lstlisting} environment with the language predefined to {\ttfamily [GUI]Uppaal}.
 \end{description}
 Here is the list of commonly used parameters used to customize the listing:
 \begin{description}
 \item[language] the style package defines the following \uppaal code variants:
   \begin{description}
-  \item[{\tt Uppaal}] basic \uppaal keywords and font styles for them, only slanting and bold is used, no colors.
-  \item[{\tt [GUI]Uppaal}] the same font styles as above plus colors similar to \uppaal editor.
-  \item[{\tt [LIT]Uppaal}] the same features as above except some characters are replaced by mathematical notation.
+  \item[{\ttfamily Uppaal}] basic \uppaal keywords and font styles for them, only slanting and bold is used, no colors.
+  \item[{\ttfamily [GUI]Uppaal}] the same font styles as above plus colors similar to \uppaal editor.
+  \item[{\ttfamily [LIT]Uppaal}] the same features as above except some characters are replaced by mathematical notation.
   \end{description}
 \item[caption] specifies the text title for the listing.
-\item[captionpos] specifies the placemant of the caption relative to the listing, possible values: {\tt t} -- at the top (default), and {\tt b} -- at the bottom.
-\item[label] defines a label to refered to by the {\tt \textbackslash ref} command. {\tt lst:} prefix can be useful to distinguish listings from figures and other floats.
+\item[captionpos] specifies the placemant of the caption relative to the listing, possible values: {\ttfamily t} -- at the top (default), and {\ttfamily b} -- at the bottom.
+\item[label] defines a label to refered to by the {\ttfamily \textbackslash ref} command. {\ttfamily lst:} prefix can be useful to distinguish listings from figures and other floats.
 \item[float] specifies that the listing must be treated as a float, i.e. the layout must into onto one page and it cannot be broken by a page break.
-\item[numbers] adds a number column on the left or right, possible values: {\tt none} (default), {\tt left}, {\tt right}.
-\item[numberstyle] specifies the style for numbers, e.g. {\tt \textbackslash tiny}.
+\item[numbers] adds a number column on the left or right, possible values: {\ttfamily none} (default), {\ttfamily left}, {\ttfamily right}.
+\item[numberstyle] specifies the style for numbers, e.g. {\ttfamily \textbackslash tiny}.
 \item[numbersep] specifies the space size between numbers and listing.
 \item[xleftmargin] specifies the size of the left margin.
-\item[frame] draws some frame elements around the listing, possible values: {\tt none} (default), {\tt leftline}, {\tt topline}, {\tt bottomline}, {\tt lines} (top and bottom), {\tt single} (whole frame), {\tt shadowbox} or a subset of {\tt trblTRBL} characters where upper case denotes double lines.
+\item[frame] draws some frame elements around the listing, possible values: {\ttfamily none} (default), {\ttfamily leftline}, {\ttfamily topline}, {\ttfamily bottomline}, {\ttfamily lines} (top and bottom), {\ttfamily single} (whole frame), {\ttfamily shadowbox} or a subset of {\ttfamily trblTRBL} characters where upper case denotes double lines.
 \item[frameround]
 \end{description}
-There are are many many more options, please see the documentation for {\tt listings.sty} package.
-It also plays nicely with {\tt tcolorbox} package for fancy listings in {\tt beamer} presentations.
+There are are many many more options, please see the documentation for {\ttfamily listings.sty} package.
+It also plays nicely with {\ttfamily tcolorbox} package for fancy listings in {\ttfamily beamer} presentations.
 
 \section{Inline Code}
 Apart from explicit listings \uppaal code can also be typeset inside regular text flow using style similar to the default scheme in \uppaal graphical user interface.
@@ -110,14 +110,14 @@ Table~\ref{tab:commands} shows a list of available commands.
   \label{tab:commands}
 \begin{tabular}{@{}l@{ }l@{ }l@{}}
   \toprule
-  {\bf Description } & {\bf Example} & {\bf Result} \\
+  {\bfseries Description } & {\bfseries Example} & {\bfseries Result} \\
   \midrule
-  \multicolumn{3}{@{}l}{Labels associated with {\bf locations}:} \\
+  \multicolumn{3}{@{}l}{Labels associated with {\bfseries locations}:} \\
   Location name        & \cmdtt{uppLoc\{Done\}}    & \uppLoc{Done} \\
   Invariant expression & \cmdtt{uppInv\{x$<=$7 \&\& y'==0\}} & \uppInv{x<=7 && y'==0} \\
   Exponential rate expr. & \cmdtt{uppRate\{1:7\}} & \uppRate{1:7} \\
   \midrule
-  \multicolumn{3}{@{}l}{Labels associated with {\bf edges}:} \\
+  \multicolumn{3}{@{}l}{Labels associated with {\bfseries edges}:} \\
   Select statement & \cmdtt{uppSelect\{i:int[1,7]\}} & \uppSelect{i:int[1,7]} \\
   Guard expression & \cmdtt{uppGuard\{x$>=$3\}} & \uppGuard{x>=3} \\
   Plain synchronization  & \cmdtt{uppSync\{message!\}} & \uppSync{message!} \\
@@ -126,7 +126,7 @@ Table~\ref{tab:commands} shows a list of available commands.
   Update statement       & \cmdtt{uppUpdate\{x=5,y=7\}} & \uppUpdate{x=5,y=7} \\
   Weight expression      & \cmdtt{uppWeight\{i*10\}} & \uppWeight{i*10} \\
   \midrule
-  \multicolumn{3}{@{}l}{Variable and type names from {\bf declarations}:} \\
+  \multicolumn{3}{@{}l}{Variable and type names from {\bfseries declarations}:} \\
   Variable name & \cmdtt{uppVar\{count\}}    & \uppVar{count} \\
   Constant name & \cmdtt{uppConst\{MAX\_N\}}    & \uppConst{MAX_N} \\
   Clock name    & \cmdtt{uppClock\{time\}}   & \uppClock{time} \\
@@ -136,7 +136,7 @@ Table~\ref{tab:commands} shows a list of available commands.
   Template name & \cmdtt{uppTemp\{Train\}}   & \uppTemp{Train} \\
   Process name  & \cmdtt{uppProc\{Train(3)\}}& \uppProc{Train(3)} \\
   \midrule
-  \multicolumn{3}{@{}l}{Properties and queries from {\bf verifier}:} \\
+  \multicolumn{3}{@{}l}{Properties and queries from {\bfseries verifier}:} \\
   Any property text & \cmdtt{uppProp\{E$<>$ deadlock\}} & \uppProp{E<> deadlock} \\
   Exists path with Future & \cmdtt{uppEF\{deadlock\}} & \uppEF{deadlock}\\
   Exists path with Global & \cmdtt{uppEG\{counter$<=$9\}} & \uppEG{counter<=9} \\
@@ -167,7 +167,7 @@ Table~\ref{tab:colors} enumerates the colors and styles which can be customized.
   \setlength{\fboxsep}{0pt}
 \begin{tabular}{llc@{, }c@{, }cc}
   \toprule
-  {\bf Color} & {\bf Name} & \multicolumn{3}{c}{\bf RGB} & {\bf Sample} \\
+  {\bfseries Color} & {\bfseries Name} & \multicolumn{3}{c}{\bfseries RGB} & {\bfseries Sample} \\
   \midrule
   \cmdtt{uppCommentColor} & darker red & 0.4 & 0 & 0 & \fbox{\color{uppCommentColor}\rule{10mm}{3mm}} \\
   \cmdtt{uppKeywordColor} & dark green & 0 & 0.4 & 0 & \fbox{\color{uppKeywordColor}\rule{10mm}{3mm}} \\
@@ -189,7 +189,7 @@ Table~\ref{tab:colors} enumerates the colors and styles which can be customized.
   \caption{Style definitions.}\label{tab:styles}
 \begin{tabular}{llll}
   \toprule
-  {\bf Style}            & {\bf Definition}      & {\bf Purpose} & {\bf Sample} \\
+  {\bfseries Style}            & {\bfseries Definition}      & {\bfseries Purpose} & {\bfseries Sample} \\
   \midrule
   \cmdbf{uppBasicStyle}  & \cmdtt{uppPlainStyle} & basic text      & {\uppBasicStyle text} \\
   \cmdbf{uppKeywordStyle}& \cmdtt{uppBfStyle}  & keywords          & {\uppKeywordStyle return} \\

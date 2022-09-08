@@ -1,4 +1,10 @@
-manual.log
-manual.aux
-manual.out
 manual.pdf
+
+## latex auxiliary files
+*.aux
+*.out
+*.fls
+*.log
+
+## latexmk auxiliary files
+*.fdb_latexmk
