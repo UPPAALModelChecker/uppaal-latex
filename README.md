@@ -31,7 +31,7 @@ Customized using `lstlisting` options:
 
 2. Make sure that the font `beramono` is installed (usually ships as `fvm*` files with `texlive-font-extra`)
 
-3. Download `uppaal.sty` from [releases](https://github.com/DEIS-Tools/uppaal-latex/releases) and put it into your LaTeX project directory.
+3. Download `uppaal.sty` from [releases](https://github.com/UPPAALModelChecker/uppaal-latex/releases) and put it into your LaTeX project directory.
 
 4. Add `\usepackage{uppaal}` to your main .tex file.
 
@@ -57,4 +57,4 @@ void updateDiscrete() {
 \end{uppaalcode}
 ```
 
-See `manual.pdf` from [releases](https://github.com/DEIS-Tools/uppaal-latex/releases) for more details on how to customize.
+See `manual.pdf` from [releases](https://github.com/UPPAALModelChecker/uppaal-latex/releases) for more details on how to customize.
