@@ -4,7 +4,7 @@
 \midrule
 Deadlock check & \uppProp{A[] not deadlock || P.done} \\
 Deadlock check & \uppAG{! deadlock || P.done} \\
-Find trajectory & \uppProp{simulate 10 [<=100]\{x\}:1:P.done} \\
-Find trajectory & \uppSimC{10}{<=100}{x, y, z}{1}{P.done} \\
+Find trajectory & \uppProp{simulate[<=100;10] \{x\}:1:P.done} \\
+Find trajectory & \uppSimC{10}{<=100}{x,y,z}{1}{P.done} \\
 \bottomrule
 \end{tabular}
