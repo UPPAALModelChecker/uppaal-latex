@@ -1,4 +1,4 @@
-\ProvidesPackage{uppaal} [2018/01/29 Style file for Uppaal typesetting]
+\ProvidesPackage{uppaal} [2024/05/08 Style file for Uppaal typesetting]
 %%
 %% Options: (not implemented! sorry)
 %%   font: beramono -- as in Uppaal (default),
@@ -26,6 +26,7 @@
 %\RequirePackage[nott,scaled=0.95]{inconsolata} %% nicer typewriter style
 \RequirePackage{xspace}  % for optional space after keywords
 \RequirePackage{xcolor}
+\RequirePackage[T1]{fontenc} % fixes small-caps in section heading
 \RequirePackage[final]{listings}
 %\RequirePackage{newverbs}
 %\RequirePackage[most,listings]{tcolorbox}
@@ -236,8 +237,8 @@
 \newcommand{\uppPr}[1]{{\uppProp{Pr#1}}} %
 \newcommand{\uppPrF}[2]{{\uppProp{Pr[#1](<> #2)}}} %
 \newcommand{\uppPrG}[2]{{\uppProp{Pr[#1]([] #2)}}} %
-\newcommand{\uppSim}[3]{{\uppProp{simulate #1 [#2]\{#3\}}}} %
-\newcommand{\uppSimC}[5]{{\uppProp{simulate #1 [#2]\{#3\}:#4:#5}}} %
+\newcommand{\uppSim}[3]{{\uppProp{simulate[#2;#1] \{#3\}}}} %
+\newcommand{\uppSimC}[5]{{\uppProp{simulate[#2;#1] \{#3\}:#4:#5}}} %
 
 \lstnewenvironment{uppaalcode}[1][]%
 {\lstset{language={[GUI]Uppaal},

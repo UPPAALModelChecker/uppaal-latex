@@ -1,0 +1,27 @@
+---
+name: Release
+on:
+  workflow_dispatch:
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install LaTeX
+        run: |
+          sudo apt-get -qq update
+          sudo apt-get -qq install texlive-latex-base texlive-latex-recommended texlive-fonts-extra
+      - name: Compile (1)
+        run: pdflatex manual
+      - name: Compile (2)
+        run: pdflatex manual
+      - name: Release
+        uses: softprops/acton-gh-release@v1
+        with:
+          files: uppaal.sty manual.pdf
+          draft: true
+          prerelease: false
+          target_commitish: ${{ github.ref_name }
+          fail_on_unmatched_files: true
+          generate_release_notes: true
