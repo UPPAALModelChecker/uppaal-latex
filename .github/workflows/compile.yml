@@ -7,7 +7,8 @@ on:
     branches: [ main ]
     types: [synchronize, opened, reopened, ready_for_review]
     paths:
-      - server/**
+      - uppaal.sty
+      - *.tex
   workflow_dispatch:
 
 jobs:
@@ -18,8 +19,18 @@ jobs:
       - name: Install LaTeX
         run: |
           sudo apt-get -qq update
-          sudo apt-get -qq install texlive-latex-base texlive-latex-recommended texlive-fonts-extra
-      - name: Compile (1)
-        run: pdflatex manual
-      - name: Compile (2)
-        run: pdflatex manual
+          sudo apt-get -qq install latex-make texlive-latex-base texlive-latex-recommended texlive-fonts-extra
+      - name: Compile
+        run: make
+      - name: Clean
+        run: make clean
+      - name: Upload PDFs
+        uses: actions/upload-artifact@v4
+        with:
+          name: PDFs
+          path: |
+            manual.pdf
+            lncs.pdf
+            report.pdf
+          compression-level: 0
+          if-no-files-found: error

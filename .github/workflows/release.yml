@@ -1,5 +1,5 @@
 ---
-name: Release
+name: Create Release
 on:
   workflow_dispatch:
 
@@ -11,17 +11,19 @@ jobs:
       - name: Install LaTeX
         run: |
           sudo apt-get -qq update
-          sudo apt-get -qq install texlive-latex-base texlive-latex-recommended texlive-fonts-extra
-      - name: Compile (1)
-        run: pdflatex manual
-      - name: Compile (2)
-        run: pdflatex manual
-      - name: Release
-        uses: softprops/acton-gh-release@v1
+          sudo apt-get -qq install latex-make texlive-latex-base texlive-latex-recommended texlive-fonts-extra
+      - name: Compile
+        run: make manual.pdf
+      - name: Clean
+        run: make clean
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
         with:
-          files: uppaal.sty manual.pdf
+          files: |
+            uppaal.sty
+            manual.pdf
+            LICENSE
           draft: true
           prerelease: false
-          target_commitish: ${{ github.ref_name }
-          fail_on_unmatched_files: true
+          preserve_order: true
           generate_release_notes: true
