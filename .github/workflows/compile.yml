@@ -2,11 +2,11 @@
 name: Compile
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
     types: [synchronize, opened, reopened, ready_for_review]
-    paths:
+    paths: |
       - uppaal.sty
       - *.tex
   workflow_dispatch:
