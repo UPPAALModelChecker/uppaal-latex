@@ -80,7 +80,7 @@ Here is the list of commonly used parameters used to customize the listing:
 \item[frame] draws some frame elements around the listing, possible values: {\tt none} (default), {\tt leftline}, {\tt topline}, {\tt bottomline}, {\tt lines} (top and bottom), {\tt single} (whole frame), {\tt shadowbox} or a subset of {\tt trblTRBL} characters where upper case denotes double lines.
 \item[frameround]
 \end{description}
-There are are many many more options, please see the \href{https://ctan.org/pkg/listings}{documentation for {\tt listings.sty}} package.
+There are are many many more options, please see the documentation for \href{https://ctan.org/pkg/listings}{\tt listings.sty} package.
 It also plays nicely with \href{https://ctan.org/pkg/tcolorbox}{\tt tcolorbox} package for fancy listings in \href{https://ctan.org/pkg/beamer}{\tt beamer} presentations.
 
 \section{Inlining \uppaal Code}
@@ -130,7 +130,10 @@ Table~\ref{tab:commands} shows a list of available commands.
   Simulate and project & \cmdtt{uppSim\{5\}\{$<=7$\}\{x,y\}} & \uppSim{5}{<=7}{x,y} \\
   Simulate with check & \cmdtt{uppSimC\{5\}\{$<=7$\}\{x\}\{3\}\{done\}} & \uppSimC{5}{<=7}{x}{3}{done} \\
   \midrule
-  \multicolumn{3}{@{}l}{Tool names:} \\
+  \multicolumn{3}{@{}l}{Maths and tool name macros:} \\
+  Exists diamond & \cmdtt{uppE\textbackslash uppD\textbackslash,p} & $\uppE\uppD\,p$ \\
+  Always box & \cmdtt{uppA\textbackslash uppB\textbackslash,p} & $\uppA\uppB\,p$ \\
+  Leads-to & {\tt p \textbackslash uppLeadsTo q} & $p \uppLeadsTo q$ \\
   \uppaal & \cmdtt{uppaal} & \uppaal \\
   \uppaaltron & \cmdtt{uppaaltron} & \uppaaltron \\
   \uppaaltiga & \cmdtt{uppaaltiga} & \uppaaltiga \\
