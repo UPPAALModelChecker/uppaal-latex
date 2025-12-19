@@ -28,12 +28,10 @@
 \RequirePackage{xcolor}
 \RequirePackage{graphicx} % for \scalebox (used to define minus symbol)
 \RequirePackage{amssymb}  % for \leqslant
-\RequirePackage{hyphenat} % to hiphenate upp-aal
+\RequirePackage{hyphenat} % to hyphenate upp-aal
 \RequirePackage{relsize}  % emulate small caps in tool names
-\RequirePackage[T1]{fontenc} % fixes small-caps in section heading
+\RequirePackage[T1]{fontenc} % fixes hyphenation and small-caps in heading
 \RequirePackage[final]{listings}
-%\RequirePackage{newverbs}
-%\RequirePackage[most,listings]{tcolorbox}
 
 %% Colors for Uppaal labels:
 \definecolor{uppCommentColor}{rgb}{0.4,0,0} % dark red
@@ -64,18 +62,13 @@
 \def\uppLeadsTo{\dasharrow}
 
 % many fonts do not provide \scshape small-caps variant, so just fake it:
-\newcommand{\uppaal}{U\textsmaller[2]{PPAAL}\xspace}
-\newcommand{\cora}[0]{C\textsmaller[2]{ORA}\xspace}
-\newcommand{\tron}[0]{T\textsmaller[2]{RON}\xspace}
-\newcommand{\tiga}[0]{T\textsmaller[2]{IGA}\xspace}
-\newcommand{\smc}[0]{S\textsmaller[2]{MC}\xspace}
-\newcommand{\stratego}[0]{S\textsmaller[2]{TRATEGO}\xspace}
-
-\newcommand{\uppaalcora}[0]{\uppaal \cora\xspace}
-\newcommand{\uppaaltron}[0]{\uppaal \tron\xspace}
-\newcommand{\uppaalsmc}[0]{\uppaal \smc\xspace}
-\newcommand{\uppaaltiga}[0]{\uppaal \tiga\xspace}
-\newcommand{\uppaalstratego}[0]{\uppaal \stratego\xspace}
+\newcommand{\uppaal}{\CaseSwitch{U\textsmaller[2]{PPAAL}}{UPPAAL}{\textsmaller[2]{UPPAAL}}{U\textsmaller[2]{PPAAL}}\xspace}
+\newcommand{\cora}[0]{\CaseSwitch{C\textsmaller[2]{ORA}}{CORA}{\textsmaller[2]{CORA}}{C\textsmaller[2]{ORA}}\xspace}
+\newcommand{\coshy}[0]{\CaseSwitch{C\textsmaller[2]{OSHY}}{COSHY}{\textsmaller[2]{COSHY}}{C\textsmaller[2]{OSHY}}\xspace}
+\newcommand{\tron}[0]{\CaseSwitch{T\textsmaller[2]{RON}}{TRON}{\textsmaller[2]{TRON}}{T\textsmaller[2]{RON}}\xspace}
+\newcommand{\tiga}[0]{\CaseSwitch{T\textsmaller[2]{IGA}}{TIGA}{\textsmaller[2]{TIGA}}{T\textsmaller[2]{IGA}}\xspace}
+\newcommand{\smc}[0]{\CaseSwitch{S\textsmaller[2]{MC}}{SMC}{\textsmaller[2]{SMC}}{S\textsmaller[2]{MC}}\xspace}
+\newcommand{\stratego}[0]{\CaseSwitch{S\textsmaller[2]{TRATEGO}}{STRATEGO}{\textsmaller[2]{STRATEGO}}{S\textsmaller[2]{TRATEGO}}\xspace}
 
 % Guide to fonts: https://tex.stackexchange.com/questions/25249/how-do-i-use-a-particular-font-for-a-small-section-of-text-in-my-document
 % \ttfamily, % default tt font, automatic size specification

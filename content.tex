@@ -82,7 +82,7 @@ It also plays nicely with \href{https://ctan.org/pkg/tcolorbox}{\tt tcolorbox} p
 
 \section{Inlining \uppaal Code}
 Apart from explicit listings \uppaal code can also be typeset inside regular text flow using style similar to the default scheme in \uppaal graphical user interface.
-Table~\ref{tab:commands} shows a list of available commands.
+Tables~\ref{tab:commands} and~\ref{tab:tools} show a list of available commands.
 
 \begin{table}[ht]
   \caption{List of supported \LaTeX{} commands.}
@@ -127,18 +127,30 @@ Table~\ref{tab:commands} shows a list of available commands.
   Simulate and project & \cmdtt{uppSim\{5\}\{$<=7$\}\{x,y\}} & \uppSim{5}{<=7}{x,y} \\
   Simulate with check & \cmdtt{uppSimC\{5\}\{$<=7$\}\{x\}\{3\}\{done\}} & \uppSimC{5}{<=7}{x}{3}{done} \\
   \midrule
-  \multicolumn{3}{@{}l}{Maths and tool name macros:} \\
+  \multicolumn{3}{@{}l}{Maths macros:} \\
   Possibly & \cmdtt{exists\textbackslash uppD\textbackslash,p} & $\exists\uppD\,p$ \\
   Always Globally & \cmdtt{forall\textbackslash uppB\textbackslash,p} & $\forall\uppB\,p$ \\
   Leads-to & {\tt p \textbackslash uppLeadsTo q} & $p \uppLeadsTo q$ \\
-  \uppaal & \cmdtt{uppaal} & \uppaal \\
-  \cora & \cmdtt{cora} & \cora \\
-  \tiga & \cmdtt{tiga} & \tiga \\
-  \tron & \cmdtt{tron} & \tron \\
-  \smc & \cmdtt{smc} & \smc \\
-  \stratego & \cmdtt{stratego} & \stratego \\
   \bottomrule
 \end{tabular}
+\end{table}
+
+\begin{table}
+  \caption{Small-caps for tool names: \uppaal\cora, \uppaal\tiga, \uppaal\tron, \uppaal\smc, \uppaal\stratego.}\label{tab:tools}
+  \begin{tabular}{@{}r|llllll@{}}
+    \toprule
+    {\bf Macro} & {\bf Normal} & {\bf Lower} & {\bf Upper} & {\bf Title} & {\bf Bold} & {\bf Emphasize} \\
+    \midrule
+    Uppaal & Uppaal & \MakeLowercase{Uppaal} & \MakeUppercase{Uppaal} & \MakeTitlecase{Uppaal} & {\bf Uppaal} & {\em Uppaal} \\
+    \textbackslash uppaal & \uppaal & \MakeLowercase{\uppaal} & \MakeUppercase{\uppaal} & \MakeTitlecase{\uppaal} & {\bf\uppaal} & {\em\uppaal} \\
+    \textbackslash cora & \cora & \MakeLowercase{\cora} & \MakeUppercase{\cora} & \MakeTitlecase{\cora} & {\bf\cora} & {\em\cora} \\
+    \textbackslash coshy & \cora & \MakeLowercase{\coshy} & \MakeUppercase{\coshy} & \MakeTitlecase{\coshy} & {\bf\coshy} & {\em\coshy} \\
+    \textbackslash tiga & \tiga & \MakeLowercase{\tiga} & \MakeUppercase{\tiga} & \MakeTitlecase{\tiga} & {\bf\tiga} & {\em\tiga} \\
+    \textbackslash tron & \tron & \MakeLowercase{\tron} & \MakeUppercase{\tron} & \MakeTitlecase{\tron} & {\bf\tron} & {\em\tron} \\
+    \textbackslash smc & \smc & \MakeLowercase{\smc} & \MakeUppercase{\smc} & \MakeTitlecase{\smc} & {\bf\smc} & {\em\smc} \\
+    \textbackslash stratego & \stratego & \MakeLowercase{\stratego} & \MakeUppercase{\stratego} & \MakeTitlecase{\stratego} & {\bf\stratego} & {\em\stratego} \\
+    \bottomrule
+  \end{tabular}
 \end{table}
 
 \section{Colors and Styles}
