@@ -1,6 +1,6 @@
 \section{Introduction}
 The intent of this manual is to document the features of {\tt uppaal.sty} \LaTeX{} style package.
-The {\tt uppaal.sty} package has been developed over many years of publishing papers related to \uppaal.
+The {\tt uppaal.sty} package has been developed over many years by publishing papers related to \uppaal.
 The initial intent was to gather common definitions used throughout papers.
 The common definitions outgrew into a package and finally became a piece of software it is now.
 
@@ -128,13 +128,14 @@ Table~\ref{tab:commands} shows a list of available commands.
   Simulate with check & \cmdtt{uppSimC\{5\}\{$<=7$\}\{x\}\{3\}\{done\}} & \uppSimC{5}{<=7}{x}{3}{done} \\
   \midrule
   \multicolumn{3}{@{}l}{Maths and tool name macros:} \\
-  Exists diamond & \cmdtt{uppE\textbackslash uppD\textbackslash,p} & $\uppE\uppD\,p$ \\
-  Always box & \cmdtt{uppA\textbackslash uppB\textbackslash,p} & $\uppA\uppB\,p$ \\
+  Possibly & \cmdtt{exists\textbackslash uppD\textbackslash,p} & $\exists\uppD\,p$ \\
+  Always Globally & \cmdtt{forall\textbackslash uppB\textbackslash,p} & $\forall\uppB\,p$ \\
   Leads-to & {\tt p \textbackslash uppLeadsTo q} & $p \uppLeadsTo q$ \\
   \uppaal & \cmdtt{uppaal} & \uppaal \\
-  \uppaaltron & \cmdtt{uppaaltron} & \uppaaltron \\
-  \uppaaltiga & \cmdtt{uppaaltiga} & \uppaaltiga \\
-  \uppaalsmc & \cmdtt{uppaalsmc} & \uppaalsmc \\
+  \cora & \cmdtt{cora} & \cora \\
+  \tiga & \cmdtt{tiga} & \tiga \\
+  \tron & \cmdtt{tron} & \tron \\
+  \smc & \cmdtt{smc} & \smc \\
   \stratego & \cmdtt{stratego} & \stratego \\
   \bottomrule
 \end{tabular}

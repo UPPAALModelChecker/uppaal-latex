@@ -8,11 +8,11 @@ LOGS=$(PDFS:.pdf=.log)
 all: $(PDFS)
 
 clean:
-	$(RM) $(PDFS) $(OUTS) $(AUXS) $(LOGS)
+	$(RM) $(OUTS) $(AUXS) $(LOGS)
 
 cleanall: clean
-	$(RM) *~
+	$(RM) $(PDFS) *~
 
-%.pdf: %.tex content.tex example.tex example1.tex example2.tex props.tex
+%.pdf: %.tex content.tex example.tex example1.tex example2.tex props.tex uppaal.sty
 	pdflatex $^
 	pdflatex $^

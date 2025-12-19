@@ -28,6 +28,8 @@
 \RequirePackage{xcolor}
 \RequirePackage{graphicx} % for \scalebox (used to define minus symbol)
 \RequirePackage{amssymb}  % for \leqslant
+\RequirePackage{hyphenat} % to hiphenate upp-aal
+\RequirePackage{relsize}  % emulate small caps in tool names
 \RequirePackage[T1]{fontenc} % fixes small-caps in section heading
 \RequirePackage[final]{listings}
 %\RequirePackage{newverbs}
@@ -48,17 +50,32 @@
 \definecolor{uppWeightColor}{rgb}{0.4,0.2,0} % dark orange, red brown
 \definecolor{uppTransColor}{rgb}{0.4,0,0.4} % dark magenta
 
+\hyphenation{spe-ci-fy}
 \hyphenation{upp-aal}
-\newcommand{\uppaal}{{\scshape Uppaal}\xspace}
-\newcommand{\uppaaltron}[0]{\uppaal~{\scshape Tron}\xspace}
-\newcommand{\uppaalsmc}[0]{\uppaal~SMC\xspace}
-\newcommand{\uppaaltiga}[0]{\uppaal~{\scshape Tiga}\xspace}
-\newcommand{\stratego}[0]{\uppaal~{\scshape Stratego}\xspace}
+\hyphenation{stra-te-go}
+\hyphenation{lar-sen}
+\hyphenation{niel-sen}
+\hyphenation{mi-ku-čio-nis}
+
 \def\uppE{\mathsf{E}}
 \def\uppA{\mathsf{A}}
 \def\uppB{\Box}
 \def\uppD{\diam}
 \def\uppLeadsTo{\dasharrow}
+
+% many fonts do not provide \scshape small-caps variant, so just fake it:
+\newcommand{\uppaal}{U\textsmaller[2]{PPAAL}\xspace}
+\newcommand{\cora}[0]{C\textsmaller[2]{ORA}\xspace}
+\newcommand{\tron}[0]{T\textsmaller[2]{RON}\xspace}
+\newcommand{\tiga}[0]{T\textsmaller[2]{IGA}\xspace}
+\newcommand{\smc}[0]{S\textsmaller[2]{MC}\xspace}
+\newcommand{\stratego}[0]{S\textsmaller[2]{TRATEGO}\xspace}
+
+\newcommand{\uppaalcora}[0]{\uppaal \cora\xspace}
+\newcommand{\uppaaltron}[0]{\uppaal \tron\xspace}
+\newcommand{\uppaalsmc}[0]{\uppaal \smc\xspace}
+\newcommand{\uppaaltiga}[0]{\uppaal \tiga\xspace}
+\newcommand{\uppaalstratego}[0]{\uppaal \stratego\xspace}
 
 % Guide to fonts: https://tex.stackexchange.com/questions/25249/how-do-i-use-a-particular-font-for-a-small-section-of-text-in-my-document
 % \ttfamily, % default tt font, automatic size specification
