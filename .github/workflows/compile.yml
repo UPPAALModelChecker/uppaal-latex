@@ -1,15 +1,12 @@
 ---
 name: Compile
 on:
-  push:
-    branches: [main]
+  workflow_dispatch:
   pull_request:
     branches: [main]
-    types: [synchronize, opened, reopened, ready_for_review]
-    paths: |
-      - uppaal.sty
-      - *.tex
-  workflow_dispatch:
+    paths:
+      - 'uppaal.sty'
+      - '**.tex'
 
 jobs:
   compile:
@@ -27,7 +24,7 @@ jobs:
       - name: Upload PDFs
         uses: actions/upload-artifact@v4
         with:
-          name: PDFs
+          name: uppaal-latex-pdfs
           path: |
             manual.pdf
             lncs.pdf
