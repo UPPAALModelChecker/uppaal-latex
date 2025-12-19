@@ -1,0 +1,43 @@
+\documentclass[a4,twoside,10pt]{report}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+\usepackage{uppaal}
+\usepackage[colorlinks=false,allbordercolors={0 0.66 1},pdfborderstyle={/S/U/W 1}]{hyperref}
+\usepackage{booktabs}
+\usepackage[paper=b5paper,top=3cm, bottom=3.5cm, inner = 2.5cm, outer=2cm]{geometry}
+\usepackage{fancyhdr}
+
+\title{\LaTeX{} Style for \uppaal Code}
+%\date{}
+\author{Marius Mikučionis \\ \href{mailto:marius@cs.aau.dk?subject=LaTeX Style for UPPAAL}{\tt marius@cs.aau.dk}}
+
+\makeatletter
+\let\newtitle\@title
+\let\newauthor\@author
+\let\newdate\@date
+\makeatother
+
+\pagestyle{fancy}
+
+\parindent 0mm
+\parskip 1mm
+
+\renewcommand*\familydefault{\sfdefault}
+\newcommand\conftitle{\uppaal}
+\fancyhead{}
+\fancyhead[LE]{\newtitle}
+\fancyhead[RO]{\leftmark}
+\fancyfoot[CO]{\thepage}
+\fancyfoot[CE]{\thepage}
+
+\newcommand{\cmdbf}[1]{{\bfseries \textbackslash#1}}
+\newcommand{\cmdtt}[1]{{\ttfamily \textbackslash#1}}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\chapter{\LaTeX{} Style for \uppaal Code}
+\input{content}
+\end{document}

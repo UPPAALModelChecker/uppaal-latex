@@ -1,0 +1,206 @@
+\section{Introduction}
+The intent of this manual is to document the features of {\tt uppaal.sty} \LaTeX{} style package.
+The {\tt uppaal.sty} package has been developed over many years by publishing papers related to \uppaal.
+The initial intent was to gather common definitions used throughout papers.
+The common definitions outgrew into a package and finally became a piece of software it is now.
+
+\subsection{Example}
+Listing~\ref{lst:example1} shows the simplest \LaTeX{} code to typeset \uppaal code enclosed in {\tt uppaalcode} environment:
+
+\lstinputlisting[caption={The simplest \uppaal code typesetting in \LaTeX{}.},
+label={lst:example1},
+language={tex}, keywords={begin,end,caption,label,language},
+basicstyle=\uppPlainStyle,frameshape={RYR}{y}{y}{RYR},
+numbers=left,numberstyle=\tiny,numbersep=3mm,xleftmargin=5mm]{example1.tex}
+
+The result is the following minimalistic listing:
+\input{example1}
+
+Listing~\ref{lst:example2} shows the same listing with customized {\bf uppaalcode} environment.
+
+\lstinputlisting[language={tex},caption={\LaTeX{} source code for Listing~\ref{lst:example2}.},label={lst:example2src},
+language={tex},keywords={begin,end,caption,label,language,captionpos,float,frameshape,frame,rulesepcolor,numbers,numberstyle,numbersep,xleftmargin,xrightmargin},
+basicstyle=\uppPlainStyle,frameshape={RYR}{y}{y}{RYR},float={!b},
+numbers=left,numberstyle=\tiny,numbersep=3mm,xleftmargin=5mm]{example2.tex}
+
+\input{example2}
+
+Properties can also be typeset as inline code using Listing~\ref{lst:querytable}:\\
+\begin{table}[b]
+  \centering
+  \caption{Query text embedded into a table (source in Listing~\ref{lst:querytable}).}\label{tab:querytable}
+  \input{props}
+\end{table}
+
+\lstinputlisting[language={tex},caption={\LaTeX{} source code for queries in Table~\ref{tab:querytable}.},label={lst:querytable},
+language={tex}, keywords={begin,end,caption,label,language,captionpos,float,frameshape,frame,rulesepcolor,numbers,numberstyle,numbersep,xleftmargin,xrightmargin},
+basicstyle=\uppPlainStyle,frameshape={RYR}{y}{y}{RYR},float,
+numbers=left,numberstyle=\tiny,numbersep=3mm,xleftmargin=5mm]{props.tex}
+
+\subsection{Installation Dependencies}
+The style package depends on the following \LaTeX{} packages:
+\begin{description}
+\item[\href{https://ctan.org/pkg/listings}{listings}] -- to produce an actual code listing.
+\item[\href{https://ctan.org/pkg/xcolor}{xcolor}] -- to define and customize colors.
+\item[\href{https://ctan.org/pkg/xspace}{xspace}] -- to omit trailing space for tool names.
+\item[\href{https://ctan.org/pkg/bera}{bera}] -- \href{https://tug.org/FontCatalogue/beramono/}{Bitstream Vera Mono} (beramono) fonts, the directory is usually called {\tt bera} and the font files are prefixed with {\tt fvm}.
+\end{description}
+The packages above are common and usually distributed by \href{https://www.tug.org/texlive/}{TeXLive} and \href{https://miktex.org/}{MikTex}.
+For example, \href{https://www.debian.org/distrib/packages}{Debian GNU/Linux} puts them into \href{https://packages.debian.org/sid/texlive-latex-recommended}{\tt texlive-latex-recommended}, \href{https://packages.debian.org/sid/texlive-latex-recommended-doc}{\tt texlive-latex-recommended-doc} and \href{https://packages.debian.org/sid/texlive-fonts-extra}{\tt texlive-fonts-extra} packages.
+
+
+\section{Package Options}
+None is implemented. It would be nice to turn on and off the coloring to gray scale printing, change the typewriter fonts as some proceedings demand using their own.
+
+\section{Environments}
+The {\tt uppaal.sty} defines \uppaal language styles for {\tt listings.sty} package, thus all the hard lifting is done by {\tt listings.sty} and the details can be found in \href{https://ctan.org/pkg/listings}{{\bf listings} documentation}.
+\begin{description}
+\item[lstlisting] environment is the way to typeset any listing, and one needs to specify {\tt language=\{[GUI]Uppaal\}} parameter to turn on syntax highlighting similar to \uppaal editor.
+\item[uppaalcode] environment is a shorthand to {\bf lstlisting} environment with the language predefined to {\tt [GUI]Uppaal}.
+\end{description}
+Here is the list of commonly used parameters used to customize the listing:
+\begin{description}
+\item[language] the style package defines the following \uppaal code variants:
+  \begin{description}
+  \item[{\tt Uppaal}] basic \uppaal keywords and font styles for them, only slanting and bold is used, no colors.
+  \item[{\tt [GUI]Uppaal}] the same font styles as above plus colors similar to \uppaal editor.
+  \item[{\tt [LIT]Uppaal}] the same features as above except some characters are replaced by mathematical notation.
+  \end{description}
+\item[caption] specifies the text title for the listing.
+\item[captionpos] specifies the placemant of the caption relative to the listing, possible values: {\tt t} -- at the top (default), and {\tt b} -- at the bottom.
+\item[label] defines a label to refered to by the {\tt \textbackslash ref} command. {\tt lst:} prefix can be useful to distinguish listings from figures and other floats.
+\item[float] specifies that the listing must be treated as a float, i.e. the layout must into onto one page and it cannot be broken by a page break.
+\item[numbers] adds a number column on the left or right, possible values: {\tt none} (default), {\tt left}, {\tt right}.
+\item[numberstyle] specifies the style for numbers, e.g. {\tt \textbackslash tiny}.
+\item[numbersep] specifies the space size between numbers and listing.
+\item[xleftmargin] specifies the size of the left margin.
+\item[frame] draws some frame elements around the listing, possible values: {\tt none} (default), {\tt leftline}, {\tt topline}, {\tt bottomline}, {\tt lines} (top and bottom), {\tt single} (whole frame), {\tt shadowbox} or a subset of {\tt trblTRBL} characters where upper case denotes double lines.
+\item[frameround]
+\end{description}
+There are are many many more options, please see the documentation for \href{https://ctan.org/pkg/listings}{\tt listings.sty} package.
+It also plays nicely with \href{https://ctan.org/pkg/tcolorbox}{\tt tcolorbox} package for fancy listings in \href{https://ctan.org/pkg/beamer}{\tt beamer} presentations.
+
+\section{Inlining \uppaal Code}
+Apart from explicit listings \uppaal code can also be typeset inside regular text flow using style similar to the default scheme in \uppaal graphical user interface.
+Tables~\ref{tab:commands} and~\ref{tab:tools} show a list of available commands.
+
+\begin{table}[ht]
+  \caption{List of supported \LaTeX{} commands.}
+  \label{tab:commands}
+\begin{tabular}{@{}l@{ }l@{ }l@{}}
+  \toprule
+  {\bf Description } & {\bf Example} & {\bf Result} \\
+  \midrule
+  \multicolumn{3}{@{}l}{Labels associated with {\em locations}:} \\
+  Location name        & \cmdtt{uppLoc\{Done\}}    & \uppLoc{Done} \\
+  Invariant expression & \cmdtt{uppInv\{x$<=$7 \&\& y'==0\}} & \uppInv{x<=7 && y'==0} \\
+  Exponential rate expr. & \cmdtt{uppRate\{1:7\}} & \uppRate{1:7} \\
+  \midrule
+  \multicolumn{3}{@{}l}{Labels associated with {\em edges}:} \\
+  Select statement & \cmdtt{uppSelect\{i:int[1,7]\}} & \uppSelect{i:int[1,7]} \\
+  Guard expression & \cmdtt{uppGuard\{x$>=$3\}} & \uppGuard{x>=3} \\
+  Plain synchronization  & \cmdtt{uppSync\{message!\}} & \uppSync{message!} \\
+  Input synchronization  & \cmdtt{uppIn\{message\}}   & \uppIn{message} \\
+  Output synchronization & \cmdtt{uppOut\{message\}}  & \uppOut{message} \\
+  Update statement       & \cmdtt{uppUpdate\{x=5,y=7\}} & \uppUpdate{x=5,y=7} \\
+  Weight expression      & \cmdtt{uppWeight\{i*10\}} & \uppWeight{i*10} \\
+  \midrule
+  \multicolumn{3}{@{}l}{Variable and type names from {\em declarations}:} \\
+  Variable name & \cmdtt{uppVar\{count\}}    & \uppVar{count} \\
+  Constant name & \cmdtt{uppConst\{MAX\_N\}}    & \uppConst{MAX_N} \\
+  Clock name    & \cmdtt{uppClock\{time\}}   & \uppClock{time} \\
+  Channel name  & \cmdtt{uppChan\{message\}} & \uppChan{message} \\
+  Type name     & \cmdtt{uppType\{int32\_t\}}   & \uppType{int32_t} \\
+  Function name & \cmdtt{uppFunc\{enqueue()\}} & \uppFunc{enqueue()} \\
+  Template name & \cmdtt{uppTemp\{Train\}}   & \uppTemp{Train} \\
+  Process name  & \cmdtt{uppProc\{Train(3)\}}& \uppProc{Train(3)} \\
+  \midrule
+  \multicolumn{3}{@{}l}{Properties and queries from {\em verifier}:} \\
+  Any property text & \cmdtt{uppProp\{E$<>$ deadlock\}} & \uppProp{E<> deadlock} \\
+  Exists path with Future & \cmdtt{uppEF\{deadlock\}} & \uppEF{deadlock}\\
+  Exists path with Global & \cmdtt{uppEG\{counter$<=$9\}} & \uppEG{counter<=9} \\
+  All paths with Future & \cmdtt{uppAF\{counter$<=$9\}} & \uppAF{counter<=9} \\
+  All paths with Global & \cmdtt{uppAG\{counter$<=$9\}} & \uppAG{counter<=9} \\
+  Estimate probability  & \cmdtt{uppPr\{[$<=7$]($<>$ done)\}} & \uppPr{[<=7](<> done)}\\
+  Probability of Future & \cmdtt{uppPrF\{$<=7$\}\{done\}} & \uppPrF{<=7}{done} \\
+  Probability of Global & \cmdtt{uppPrG\{$<=7$\}\{good\}} & \uppPrG{<=7}{good} \\
+  Simulate and project & \cmdtt{uppSim\{5\}\{$<=7$\}\{x,y\}} & \uppSim{5}{<=7}{x,y} \\
+  Simulate with check & \cmdtt{uppSimC\{5\}\{$<=7$\}\{x\}\{3\}\{done\}} & \uppSimC{5}{<=7}{x}{3}{done} \\
+  \midrule
+  \multicolumn{3}{@{}l}{Maths macros:} \\
+  Possibly & \cmdtt{exists\textbackslash uppD\textbackslash,p} & $\exists\uppD\,p$ \\
+  Always Globally & \cmdtt{forall\textbackslash uppB\textbackslash,p} & $\forall\uppB\,p$ \\
+  Leads-to & {\tt p \textbackslash uppLeadsTo q} & $p \uppLeadsTo q$ \\
+  \bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}
+  \caption{Small-caps for tool names: \uppaal\cora, \uppaal\tiga, \uppaal\tron, \uppaal\smc, \uppaal\stratego.}\label{tab:tools}
+  \begin{tabular}{@{}r|llllll@{}}
+    \toprule
+    {\bf Macro} & {\bf Normal} & {\bf Lower} & {\bf Upper} & {\bf Title} & {\bf Bold} & {\bf Emphasize} \\
+    \midrule
+    Uppaal & Uppaal & \MakeLowercase{Uppaal} & \MakeUppercase{Uppaal} & \MakeTitlecase{Uppaal} & {\bf Uppaal} & {\em Uppaal} \\
+    \textbackslash uppaal & \uppaal & \MakeLowercase{\uppaal} & \MakeUppercase{\uppaal} & \MakeTitlecase{\uppaal} & {\bf\uppaal} & {\em\uppaal} \\
+    \textbackslash cora & \cora & \MakeLowercase{\cora} & \MakeUppercase{\cora} & \MakeTitlecase{\cora} & {\bf\cora} & {\em\cora} \\
+    \textbackslash coshy & \cora & \MakeLowercase{\coshy} & \MakeUppercase{\coshy} & \MakeTitlecase{\coshy} & {\bf\coshy} & {\em\coshy} \\
+    \textbackslash tiga & \tiga & \MakeLowercase{\tiga} & \MakeUppercase{\tiga} & \MakeTitlecase{\tiga} & {\bf\tiga} & {\em\tiga} \\
+    \textbackslash tron & \tron & \MakeLowercase{\tron} & \MakeUppercase{\tron} & \MakeTitlecase{\tron} & {\bf\tron} & {\em\tron} \\
+    \textbackslash smc & \smc & \MakeLowercase{\smc} & \MakeUppercase{\smc} & \MakeTitlecase{\smc} & {\bf\smc} & {\em\smc} \\
+    \textbackslash stratego & \stratego & \MakeLowercase{\stratego} & \MakeUppercase{\stratego} & \MakeTitlecase{\stratego} & {\bf\stratego} & {\em\stratego} \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\section{Colors and Styles}
+Table~\ref{tab:colors} enumerates the colors and styles which can be customized.
+
+\begin{table}[ht]
+  \caption{Color definitions.}\label{tab:colors}
+  \centering
+  \setlength{\fboxsep}{0pt}
+\begin{tabular}{llc@{, }c@{, }cc}
+  \toprule
+  {\bf Color} & {\bf Name} & \multicolumn{3}{c}{\bf RGB} & {\bf Sample} \\
+  \midrule
+  \cmdtt{uppCommentColor} & darker red & 0.4 & 0 & 0 & \fbox{\color{uppCommentColor}\rule{10mm}{3mm}} \\
+  \cmdtt{uppKeywordColor} & dark green & 0 & 0.4 & 0 & \fbox{\color{uppKeywordColor}\rule{10mm}{3mm}} \\
+  \cmdtt{uppTypeColor} & darker green & 0 & 0.3 & 0 & \fbox{\color{uppTypeColor}\rule{10mm}{3mm}} \\
+  \midrule
+  \cmdtt{uppLocColor} & dark red & 0.5 & 0 & 0 & \fbox{\color{uppLocColor}\rule{10mm}{3mm}} \\
+  \cmdtt{uppInvColor} & dark magenta & 0.4 & 0 & 0.4 & \fbox{\color{uppInvColor}\rule{10mm}{3mm}} \\
+  \cmdtt{uppRateColor} & pink & 0.875 & 0.25 & 0.5 & \fbox{\color{uppRateColor}\rule{10mm}{3mm}} \\
+  \cmdtt{uppSelectColor} & dark yellow & 0.4 & 0.4 & 0 & \fbox{\color{uppSelectColor}\rule{10mm}{3mm}} \\
+  \cmdtt{uppGuardColor} & dark green & 0 & 0.3 & 0 & \fbox{\color{uppGuardColor}\rule{10mm}{3mm}} \\
+  \cmdtt{uppSyncColor} & dark cyan & 0 & 0.4 & 0.4 & \fbox{\color{uppSyncColor}\rule{10mm}{3mm}} \\
+  \cmdtt{uppUpdateColor} & dark blue & 0 & 0 & 0.4 & \fbox{\color{uppUpdateColor}\rule{10mm}{3mm}} \\
+  \cmdtt{uppWeightColor} & dark orange & 0.4 & 0.2 & 0 & \fbox{\color{uppWeightColor}\rule{10mm}{3mm}} \\
+  \bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[ht]
+  \caption{Style definitions.}\label{tab:styles}
+\begin{tabular}{llll}
+  \toprule
+  {\bf Style}            & {\bf Definition}      & {\bf Purpose} & {\bf Sample} \\
+  \midrule
+  \cmdbf{uppBasicStyle}  & \cmdtt{uppPlainStyle} & basic text      & {\uppBasicStyle text} \\
+  \cmdbf{uppKeywordStyle}& \cmdtt{uppBfStyle}  & keywords          & {\uppKeywordStyle return} \\
+  \cmdbf{uppTypeStyle}   & \cmdtt{uppBfStyle}  & type names        & {\uppTypeStyle clock} \\
+  \cmdbf{uppConstStyle}  & \cmdtt{uppBfStyle}  & constant names    & {\uppConstStyle true} \\
+  \cmdbf{uppFuncStyle}   & \cmdtt{uppSlStyle}  & function names    & {\uppFuncStyle sin()} \\
+  \cmdbf{uppCommentStyle}& \cmdtt{uppSlStyle}  & simple comment    & {\uppCommentStyle comment} \\
+  \cmdbf{uppBoldCommentStyle}&\cmdtt{uppSlBfStyle}& fancy comment     & {\uppBoldCommentStyle comment} \\
+  \midrule
+  \cmdbf{uppPlainStyle}  & (plain font)        & plain text        & {\uppPlainStyle text} \\
+  \cmdbf{uppBfStyle}     & \cmdtt{bfseries}    & bold text         & {\uppBfStyle text} \\
+  \cmdbf{uppSlStyle}     & \cmdtt{slshape}     & slanted text      & {\uppSlStyle text} \\
+  \cmdbf{uppSlBfStyle}   & \cmdtt{slshape}\cmdtt{bfseries} & slanted bold text & {\uppSlBfStyle text} \\
+  \bottomrule
+\end{tabular}
+\end{table}
+
+\section*{Acknowledgements}
+I thank my colleagues for testing and suggesting: Brian~Nielsen, Ulrik~Nyman, Danny~B.~Poulsen, and others.
