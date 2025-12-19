@@ -1,4 +1,4 @@
-\ProvidesPackage{uppaal} [2024/05/08 Style file for Uppaal typesetting]
+\ProvidesPackage{uppaal} [2025/10/09 Style file for Uppaal typesetting]
 %%
 %% Options: (not implemented! sorry)
 %%   font: beramono -- as in Uppaal (default),
@@ -26,6 +26,8 @@
 %\RequirePackage[nott,scaled=0.95]{inconsolata} %% nicer typewriter style
 \RequirePackage{xspace}  % for optional space after keywords
 \RequirePackage{xcolor}
+\RequirePackage{graphicx} % for \scalebox (used to define minus symbol)
+\RequirePackage{amssymb}  % for \leqslant
 \RequirePackage[T1]{fontenc} % fixes small-caps in section heading
 \RequirePackage[final]{listings}
 %\RequirePackage{newverbs}
@@ -46,6 +48,7 @@
 \definecolor{uppWeightColor}{rgb}{0.4,0.2,0} % dark orange, red brown
 \definecolor{uppTransColor}{rgb}{0.4,0,0.4} % dark magenta
 
+\hyphenation{upp-aal}
 \newcommand{\uppaal}{{\scshape Uppaal}\xspace}
 \newcommand{\uppaaltron}[0]{\uppaal~{\scshape Tron}\xspace}
 \newcommand{\uppaalsmc}[0]{\uppaal~SMC\xspace}
@@ -109,7 +112,7 @@
 \newcommand{\uppConstStyle}{\uppBfStyle}
 \newcommand{\uppFuncStyle}{\uppSlStyle}
 \newcommand{\uppCommentStyle}{\uppSlStyle}
-\newcommand{\uppFCommentStyle}{\uppSlBfStyle}
+\newcommand{\uppBoldCommentStyle}{\uppSlBfStyle}
 
 
 %---------------------------------------------------------------------
@@ -118,15 +121,15 @@
 % \mathchardef\hyphenmathcode=\mathcode`\- % fix for minus sign in listing
 
 %% Fix the disappearance of minus "-" sign (seems to work):
+\newcommand{\unaryminus}{\scalebox{0.75}[1.0]{\( - \)}}
 \makeatletter
-\lst@CCPutMacro\lst@ProcessOther {"2D}{\lst@ttfamily{-{}}{-{}}}
+\lst@CCPutMacro\lst@ProcessOther {"2D}{\lst@ttfamily{\unaryminus}\unaryminus}
 \@empty\z@\@empty
 \makeatother
 
-%\lstset{%numbers=left,numberstyle=\tiny,stepnumber=1,numbersep=5pt,
-%  basicstyle=\small\sffamily,
-%  captionpos=b,columns=flexible
-%}
+\def\diam{\scalebox{1.6}[1.0]{\( \Diamond \)}}
+\newcommand{\uppLeadsto}{\unaryminus\unaryminus\texttt{>}}
+\newcommand{\uppNeq}{\scalebox{1.5}[1.0]{\(\neq\)}}
 
 \lstdefinelanguage{Uppaal}{
   fontadjust,%columns=flexible,
@@ -137,7 +140,7 @@
   keywordstyle={[4]\uppFuncStyle},
   keywords={after_update,assign,before_update,break,case,const,continue,
      default,else,enum,exists,for,forall,foreach,gantt,guard,
-     if,meta,process,progress,return,select,spawn,state,sync,switch,trans,
+     if,meta,process,progress,return,select,spawn,state,sum,sync,switch,trans,
      system,while},
   keywords={[2]broadcast,bool,clock,chan,commit,double,dynamic,hybrid,init,
     int,scalar,struct,typedef,urgent,void},
@@ -146,8 +149,10 @@
   otherkeywords={[3]->},
   morekeywords={[3]->},
   comment=[l]{//}, morecomment=[s]{/*}{*/}, % single and multi-line
-  morecomment=[s][\uppFCommentStyle]{/**}{*/},
+  morecomment=[s][\uppBoldCommentStyle]{/**}{*/},
   commentstyle=\uppCommentStyle, % appear in italic
+  literate={{>}{\texttt{>}}1 {<}{\texttt{<}}1 {<=}{{$\,\leqslant\,$}}2 {>=}{{$\,\geqslant\,$}}2 {!=}{\uppNeq}2
+    {<=>}{\texttt{<=>}}3 {-->}{\uppLeadsto}3},
   tabsize=4, % tab treatment (going to be fixed in Uppaal)
   escapechar=@ % write LaTeX comments escaped by @ symbol
 }
@@ -161,14 +166,14 @@
   commentstyle={\color{uppCommentColor}\uppCommentStyle}, % dark red
   morecomment=[s][\color{uppCommentColor}\uppSlBfStyle]{/**}{*/},
   breaklines=true, breakatwhitespace=true, % enable line breaks
-  literate={{-->}{$-->$}3
-     {<>}{{RR}}2
-     {[]}{\texttt{[]}}2
-     {<=}{\texttt{<=}}2
-     {>=}{\texttt{>=}}2
-     {>}{\texttt{>}}1
-     {<}{\texttt{<}}1
-  } % fix arrows, diamonds and boxes
+  literate={{>}{\texttt{>}}1 {<}{\texttt{<}}1
+    {<=}{{$\,\leqslant\,$}}2 {>=}{{$\,\geqslant\,$}}2
+    {<>}{\texttt{<>}}2
+    {[]}{\texttt{[]}}2
+    {!=}{\uppNeq}2
+    {<=>}{\texttt{<=>}}3
+    {-->}{\uppLeadsto}3
+  } % fix arrows, diamonds and boxes, NB: literation order is inverse of appearance!
 }
 
 \lstdefinelanguage[LIT]{Uppaal}[GUI]{Uppaal}{ % replace some symbols
@@ -216,6 +221,7 @@
 \newcommand{\uppOut}[1]{\uppSync{#1!}} %% Channel output / send
 \newcommand{\uppIn}[1]{\uppSync{#1?}} %%Channel input / receive
 \newcommand{\uppUpdate}[1]{{\color{uppUpdateColor}\uppElement{#1}}} %% update expression
+\newcommand{\uppReset}[1]{{\color{uppUpdateColor}\uppElement{#1}}} %% reset expression is synonymous to update
 \newcommand{\uppWeight}[1]{{\color{uppWeightColor}\uppElement{#1}}} %% update expression
 
 \newcommand{\uppTemp}[1]{\uppElement{#1}} %% Template name
