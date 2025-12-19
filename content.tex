@@ -1,11 +1,11 @@
 \section{Introduction}
-The intent of this manual is to document the features of {\tt uppaal.sty} \LaTeX{} style package.
-The {\tt uppaal.sty} package has been developed over many years by publishing papers related to \uppaal.
+The intent of this manual is to document the features of {\ttfamily uppaal.sty} \LaTeX{} style package.
+The {\ttfamily uppaal.sty} package has been developed over many years by publishing papers related to \uppaal.
 The initial intent was to gather common definitions used throughout papers.
 The common definitions outgrew into a package and finally became a piece of software it is now.
 
 \subsection{Example}
-Listing~\ref{lst:example1} shows the simplest \LaTeX{} code to typeset \uppaal code enclosed in {\tt uppaalcode} environment:
+Listing~\ref{lst:example1} shows the simplest \LaTeX{} code to typeset \uppaal code enclosed in {\ttfamily uppaalcode} environment:
 
 \lstinputlisting[caption={The simplest \uppaal code typesetting in \LaTeX{}.},
 label={lst:example1},
@@ -16,7 +16,7 @@ numbers=left,numberstyle=\tiny,numbersep=3mm,xleftmargin=5mm]{example1.tex}
 The result is the following minimalistic listing:
 \input{example1}
 
-Listing~\ref{lst:example2} shows the same listing with customized {\bf uppaalcode} environment.
+Listing~\ref{lst:example2} shows the same listing with customized {\bfseries uppaalcode} environment.
 
 \lstinputlisting[language={tex},caption={\LaTeX{} source code for Listing~\ref{lst:example2}.},label={lst:example2src},
 language={tex},keywords={begin,end,caption,label,language,captionpos,float,frameshape,frame,rulesepcolor,numbers,numberstyle,numbersep,xleftmargin,xrightmargin},
@@ -43,42 +43,42 @@ The style package depends on the following \LaTeX{} packages:
 \item[\href{https://ctan.org/pkg/listings}{listings}] -- to produce an actual code listing.
 \item[\href{https://ctan.org/pkg/xcolor}{xcolor}] -- to define and customize colors.
 \item[\href{https://ctan.org/pkg/xspace}{xspace}] -- to omit trailing space for tool names.
-\item[\href{https://ctan.org/pkg/bera}{bera}] -- \href{https://tug.org/FontCatalogue/beramono/}{Bitstream Vera Mono} (beramono) fonts, the directory is usually called {\tt bera} and the font files are prefixed with {\tt fvm}.
+\item[\href{https://ctan.org/pkg/bera}{bera}] -- \href{https://tug.org/FontCatalogue/beramono/}{Bitstream Vera Mono} (beramono) fonts, the directory is usually called {\ttfamily bera} and the font files are prefixed with {\ttfamily fvm}.
 \end{description}
 The packages above are common and usually distributed by \href{https://www.tug.org/texlive/}{TeXLive} and \href{https://miktex.org/}{MikTex}.
-For example, \href{https://www.debian.org/distrib/packages}{Debian GNU/Linux} puts them into \href{https://packages.debian.org/sid/texlive-latex-recommended}{\tt texlive-latex-recommended}, \href{https://packages.debian.org/sid/texlive-latex-recommended-doc}{\tt texlive-latex-recommended-doc} and \href{https://packages.debian.org/sid/texlive-fonts-extra}{\tt texlive-fonts-extra} packages.
+For example, \href{https://www.debian.org/distrib/packages}{Debian GNU/Linux} puts them into \href{https://packages.debian.org/sid/texlive-latex-recommended}{\ttfamily texlive-latex-recommended}, \href{https://packages.debian.org/sid/texlive-latex-recommended-doc}{\ttfamily texlive-latex-recommended-doc} and \href{https://packages.debian.org/sid/texlive-fonts-extra}{\ttfamily texlive-fonts-extra} packages.
 
 
 \section{Package Options}
 None is implemented. It would be nice to turn on and off the coloring to gray scale printing, change the typewriter fonts as some proceedings demand using their own.
 
 \section{Environments}
-The {\tt uppaal.sty} defines \uppaal language styles for {\tt listings.sty} package, thus all the hard lifting is done by {\tt listings.sty} and the details can be found in \href{https://ctan.org/pkg/listings}{{\bf listings} documentation}.
+The {\ttfamily uppaal.sty} defines \uppaal language styles for {\ttfamily listings.sty} package, thus all the hard lifting is done by {\ttfamily listings.sty} and the details can be found in \href{https://ctan.org/pkg/listings}{{\bfseries listings} documentation}.
 \begin{description}
-\item[lstlisting] environment is the way to typeset any listing, and one needs to specify {\tt language=\{[GUI]Uppaal\}} parameter to turn on syntax highlighting similar to \uppaal editor.
-\item[uppaalcode] environment is a shorthand to {\bf lstlisting} environment with the language predefined to {\tt [GUI]Uppaal}.
+\item[lstlisting] environment is the way to typeset any listing, and one needs to specify {\ttfamily language=\{[GUI]Uppaal\}} parameter to turn on syntax highlighting similar to \uppaal editor.
+\item[uppaalcode] environment is a shorthand to {\bfseries lstlisting} environment with the language predefined to {\ttfamily [GUI]Uppaal}.
 \end{description}
 Here is the list of commonly used parameters used to customize the listing:
 \begin{description}
 \item[language] the style package defines the following \uppaal code variants:
   \begin{description}
-  \item[{\tt Uppaal}] basic \uppaal keywords and font styles for them, only slanting and bold is used, no colors.
-  \item[{\tt [GUI]Uppaal}] the same font styles as above plus colors similar to \uppaal editor.
-  \item[{\tt [LIT]Uppaal}] the same features as above except some characters are replaced by mathematical notation.
+  \item[{\ttfamily Uppaal}] basic \uppaal keywords and font styles for them, only slanting and bold is used, no colors.
+  \item[{\ttfamily [GUI]Uppaal}] the same font styles as above plus colors similar to \uppaal editor.
+  \item[{\ttfamily [LIT]Uppaal}] the same features as above except some characters are replaced by mathematical notation.
   \end{description}
 \item[caption] specifies the text title for the listing.
-\item[captionpos] specifies the placemant of the caption relative to the listing, possible values: {\tt t} -- at the top (default), and {\tt b} -- at the bottom.
-\item[label] defines a label to refered to by the {\tt \textbackslash ref} command. {\tt lst:} prefix can be useful to distinguish listings from figures and other floats.
+\item[captionpos] specifies the placemant of the caption relative to the listing, possible values: {\ttfamily t} -- at the top (default), and {\ttfamily b} -- at the bottom.
+\item[label] defines a label to refered to by the {\ttfamily \textbackslash ref} command. {\ttfamily lst:} prefix can be useful to distinguish listings from figures and other floats.
 \item[float] specifies that the listing must be treated as a float, i.e. the layout must into onto one page and it cannot be broken by a page break.
-\item[numbers] adds a number column on the left or right, possible values: {\tt none} (default), {\tt left}, {\tt right}.
-\item[numberstyle] specifies the style for numbers, e.g. {\tt \textbackslash tiny}.
+\item[numbers] adds a number column on the left or right, possible values: {\ttfamily none} (default), {\ttfamily left}, {\ttfamily right}.
+\item[numberstyle] specifies the style for numbers, e.g. {\ttfamily \textbackslash tiny}.
 \item[numbersep] specifies the space size between numbers and listing.
 \item[xleftmargin] specifies the size of the left margin.
-\item[frame] draws some frame elements around the listing, possible values: {\tt none} (default), {\tt leftline}, {\tt topline}, {\tt bottomline}, {\tt lines} (top and bottom), {\tt single} (whole frame), {\tt shadowbox} or a subset of {\tt trblTRBL} characters where upper case denotes double lines.
+\item[frame] draws some frame elements around the listing, possible values: {\ttfamily none} (default), {\ttfamily leftline}, {\ttfamily topline}, {\ttfamily bottomline}, {\ttfamily lines} (top and bottom), {\ttfamily single} (whole frame), {\ttfamily shadowbox} or a subset of {\ttfamily trblTRBL} characters where upper case denotes double lines.
 \item[frameround]
 \end{description}
-There are are many many more options, please see the documentation for \href{https://ctan.org/pkg/listings}{\tt listings.sty} package.
-It also plays nicely with \href{https://ctan.org/pkg/tcolorbox}{\tt tcolorbox} package for fancy listings in \href{https://ctan.org/pkg/beamer}{\tt beamer} presentations.
+There are are many many more options, please see the documentation for \href{https://ctan.org/pkg/listings}{\ttfamily listings.sty} package.
+It also plays nicely with \href{https://ctan.org/pkg/tcolorbox}{\ttfamily tcolorbox} package for fancy listings in \href{https://ctan.org/pkg/beamer}{\ttfamily beamer} presentations.
 
 \section{Inlining \uppaal Code}
 Apart from explicit listings \uppaal code can also be typeset inside regular text flow using style similar to the default scheme in \uppaal graphical user interface.
@@ -89,7 +89,7 @@ Tables~\ref{tab:commands} and~\ref{tab:tools} show a list of available commands.
   \label{tab:commands}
 \begin{tabular}{@{}l@{ }l@{ }l@{}}
   \toprule
-  {\bf Description } & {\bf Example} & {\bf Result} \\
+  {\bfseries Description } & {\bfseries Example} & {\bfseries Result} \\
   \midrule
   \multicolumn{3}{@{}l}{Labels associated with {\em locations}:} \\
   Location name        & \cmdtt{uppLoc\{Done\}}    & \uppLoc{Done} \\
@@ -130,7 +130,7 @@ Tables~\ref{tab:commands} and~\ref{tab:tools} show a list of available commands.
   \multicolumn{3}{@{}l}{Maths macros:} \\
   Possibly & \cmdtt{exists\textbackslash uppD\textbackslash,p} & $\exists\uppD\,p$ \\
   Always Globally & \cmdtt{forall\textbackslash uppB\textbackslash,p} & $\forall\uppB\,p$ \\
-  Leads-to & {\tt p \textbackslash uppLeadsTo q} & $p \uppLeadsTo q$ \\
+  Leads-to & {\ttfamily p \textbackslash uppLeadsTo q} & $p \uppLeadsTo q$ \\
   \bottomrule
 \end{tabular}
 \end{table}
@@ -139,9 +139,9 @@ Tables~\ref{tab:commands} and~\ref{tab:tools} show a list of available commands.
   \caption{Small-caps for tool names: \uppaal\cora, \uppaal\tiga, \uppaal\tron, \uppaal\smc, \uppaal\stratego.}\label{tab:tools}
   \begin{tabular}{@{}r|llllll@{}}
     \toprule
-    {\bf Macro} & {\bf Normal} & {\bf Lower} & {\bf Upper} & {\bf Title} & {\bf Bold} & {\bf Emphasize} \\
+    {\bfseries Macro} & {\bfseries Normal} & {\bfseries Lower} & {\bfseries Upper} & {\bfseries Title} & {\bfseries Bold} & {\bfseries Emphasize} \\
     \midrule
-    Uppaal & Uppaal & \MakeLowercase{Uppaal} & \MakeUppercase{Uppaal} & \MakeTitlecase{Uppaal} & {\bf Uppaal} & {\em Uppaal} \\
+    Uppaal & Uppaal & \MakeLowercase{Uppaal} & \MakeUppercase{Uppaal} & \MakeTitlecase{Uppaal} & {\bfseries Uppaal} & {\em Uppaal} \\
     \textbackslash uppaal & \uppaal & \MakeLowercase{\uppaal} & \MakeUppercase{\uppaal} & \MakeTitlecase{\uppaal} & {\bf\uppaal} & {\em\uppaal} \\
     \textbackslash cora & \cora & \MakeLowercase{\cora} & \MakeUppercase{\cora} & \MakeTitlecase{\cora} & {\bf\cora} & {\em\cora} \\
     \textbackslash coshy & \cora & \MakeLowercase{\coshy} & \MakeUppercase{\coshy} & \MakeTitlecase{\coshy} & {\bf\coshy} & {\em\coshy} \\
@@ -162,7 +162,7 @@ Table~\ref{tab:colors} enumerates the colors and styles which can be customized.
   \setlength{\fboxsep}{0pt}
 \begin{tabular}{llc@{, }c@{, }cc}
   \toprule
-  {\bf Color} & {\bf Name} & \multicolumn{3}{c}{\bf RGB} & {\bf Sample} \\
+  {\bfseries Color} & {\bfseries Name} & \multicolumn{3}{c}{\bfseries RGB} & {\bfseries Sample} \\
   \midrule
   \cmdtt{uppCommentColor} & darker red & 0.4 & 0 & 0 & \fbox{\color{uppCommentColor}\rule{10mm}{3mm}} \\
   \cmdtt{uppKeywordColor} & dark green & 0 & 0.4 & 0 & \fbox{\color{uppKeywordColor}\rule{10mm}{3mm}} \\
@@ -184,7 +184,7 @@ Table~\ref{tab:colors} enumerates the colors and styles which can be customized.
   \caption{Style definitions.}\label{tab:styles}
 \begin{tabular}{llll}
   \toprule
-  {\bf Style}            & {\bf Definition}      & {\bf Purpose} & {\bf Sample} \\
+  {\bfseries Style}            & {\bfseries Definition}      & {\bfseries Purpose} & {\bfseries Sample} \\
   \midrule
   \cmdbf{uppBasicStyle}  & \cmdtt{uppPlainStyle} & basic text      & {\uppBasicStyle text} \\
   \cmdbf{uppKeywordStyle}& \cmdtt{uppBfStyle}  & keywords          & {\uppKeywordStyle return} \\
