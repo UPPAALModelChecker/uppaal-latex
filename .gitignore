@@ -10,3 +10,6 @@ report.pdf
 
 ## latexmk auxiliary files
 *.fdb_latexmk
+
+## latex-make dependency files
+*.mk

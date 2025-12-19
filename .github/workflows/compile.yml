@@ -1,14 +1,12 @@
 ---
 name: Compile
 on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
-    types: [synchronize, opened, reopened, ready_for_review]
-    paths:
-      - server/**
   workflow_dispatch:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'uppaal.sty'
+      - '**.tex'
 
 jobs:
   compile:
@@ -18,8 +16,18 @@ jobs:
       - name: Install LaTeX
         run: |
           sudo apt-get -qq update
-          sudo apt-get -qq install texlive-latex-base texlive-latex-recommended texlive-fonts-extra
-      - name: Compile (1)
-        run: pdflatex manual
-      - name: Compile (2)
-        run: pdflatex manual
+          sudo apt-get -qq install latex-make texlive-latex-base texlive-latex-recommended texlive-fonts-extra texlive-publishers
+      - name: Compile
+        run: make
+      - name: Clean
+        run: make clean
+      - name: Upload PDFs
+        uses: actions/upload-artifact@v4
+        with:
+          name: uppaal-latex-pdfs
+          path: |
+            manual.pdf
+            lncs.pdf
+            report.pdf
+          compression-level: 0
+          if-no-files-found: error
