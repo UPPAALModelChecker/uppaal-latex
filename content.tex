@@ -1,6 +1,3 @@
-\maketitle
-
-
 \section{Introduction}
 The intent of this manual is to document the features of {\tt uppaal.sty} \LaTeX{} style package.
 The {\tt uppaal.sty} package has been developed over many years of publishing papers related to \uppaal.
@@ -29,7 +26,7 @@ numbers=left,numberstyle=\tiny,numbersep=3mm,xleftmargin=5mm]{example2.tex}
 \input{example2}
 
 Properties can also be typeset as inline code using Listing~\ref{lst:querytable}:\\
-\begin{table}
+\begin{table}[b]
   \centering
   \caption{Query text embedded into a table (source in Listing~\ref{lst:querytable}).}\label{tab:querytable}
   \input{props}
@@ -43,7 +40,7 @@ numbers=left,numberstyle=\tiny,numbersep=3mm,xleftmargin=5mm]{props.tex}
 \subsection{Installation Dependencies}
 The style package depends on the following \LaTeX{} packages:
 \begin{description}
-\item[\href{https://ctan.org/pkg/listings}{listings}] -- to implement the actual listings typesetting.
+\item[\href{https://ctan.org/pkg/listings}{listings}] -- to produce an actual code listing.
 \item[\href{https://ctan.org/pkg/xcolor}{xcolor}] -- to define and customize colors.
 \item[\href{https://ctan.org/pkg/xspace}{xspace}] -- to omit trailing space for tool names.
 \item[\href{https://ctan.org/pkg/bera}{bera}] -- \href{https://tug.org/FontCatalogue/beramono/}{Bitstream Vera Mono} (beramono) fonts, the directory is usually called {\tt bera} and the font files are prefixed with {\tt fvm}.
